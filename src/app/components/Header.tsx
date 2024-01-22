@@ -9,7 +9,7 @@ export default function Header() {
             Find your table for any occasion
           </h1>
           {/* SEARCH BAR */}
-          <SearchBar searchParams={{city:"Ottawa"}}/>
+          <SearchBar searchParams={{city:""}}/>
           {/* SEARCH BAR */}
         </div>
       </div>

@@ -10,11 +10,12 @@ export default function Navbar() {
         </a>
         <div>
             <div className="flex">
-            <button className="bg-blue-400 text-white border p-1 px-4 rounded mr-3">
+            {/* <button className="bg-blue-400 text-white border p-1 px-4 rounded mr-3">
                 Sign in
-                    </button>
-                    <AuthModal/>
-            <button className="bg-blue-400 border p-1 px-4 rounded ">Sign up</button>
+                    </button> */}
+                    <AuthModal isSignIng={true}/>
+                    <AuthModal isSignIng={false}/>
+                    {/* <button className="border p-1 px-4 rounded text-black">Sign up</button> */}
             </div>
         </div>
         </nav>

@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "./components/Header";
 import Search_side_bar from "./components/Search_side_bar";
 import RestaurantCar from "./components/RestaurantCar";
 import Link from 'next/link';
 import { PrismaClient } from "@prisma/client";
 import RestaurantCards from "../components/RestaurantCard";
+import Header from "../components/Header";
 
 const prisma = new PrismaClient();
 const fetchRestaurantByCity = async (city: string | undefined) => {

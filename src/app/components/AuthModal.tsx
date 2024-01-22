@@ -1,9 +1,12 @@
-'use client'
+"use client"
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { colors } from '@mui/material';
+import { blue } from '@mui/material/colors';
+import AuthModalInputs from './AuthModalInputs';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -17,27 +20,53 @@ const style = {
   p: 4,
 };
 
-export default function AuthModal() {
+export default function AuthModal(SignIn:{isSignIng:boolean}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => setOpen(false); 
+  
+  const [inputs, setInputs] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    city: "",
+    password: "",
+  
+  })
+
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputs({
+      ...inputs,
+      [e.target.name]: e.target.value,
+    });
+  }
+    
+    const renderContent = (signinContent: string, signupContent: string) => {
+        {
+            return SignIn.isSignIng ? signinContent : signupContent;
+        }
+    }
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
+          <button className={`${renderContent("bg-blue-400", "")}  text-black border p-1 px-4 rounded mr-3`} onClick={handleOpen}>
+              {renderContent("Sign in","Sign up")}
+          </button>
+          
+          <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+                  <div className="uppercase front-bold text-center pb-2 border-b mb-2">
+                      <p className="text-sm text-black">
+                          {renderContent("Sign In", "Create Account")}
+            </p>
+            <AuthModalInputs inputs={inputs} handleChangeInput={handleChangeInput} isSignup={ SignIn.isSignIng } />
+                  </div>      
         </Box>
       </Modal>
     </div>
