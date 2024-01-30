@@ -47,6 +47,27 @@ const AuthModalInputs = ({inputs, isSignup, handleChangeInput}:Props) => {1
         />{" "}
         {/*  onChange={handleChangeInput} */}
       </div>
+      {isSignup ? null :
+        <div className="my-2 flex justify-between text-sm">
+          <input
+            type="text"
+            className="border rounded p-2 py-3 w-[49%]"
+            placeholder="City"
+            name="city"
+            value={inputs.city}
+            onChange={handleChangeInput}
+          />{" "}
+          {/*  */}
+          <input
+            type="text"
+            className="border rounded p-2 py-3 w-[49%]"
+            placeholder="Phone"
+            name="phone"
+            value={inputs.phone}
+            onChange={handleChangeInput}
+          />
+          {/* onChange={handleChangeInput} */}
+        </div>}
       <div className="my-4 flex justify-between text-sm">
         <input
           type="password"
