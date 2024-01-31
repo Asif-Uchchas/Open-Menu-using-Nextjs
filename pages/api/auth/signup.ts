@@ -63,7 +63,7 @@ export default async function handler(
     }
     
     const hashedPassword = await bcrypt.hash(password, 10);
-
+    const secret = new TextEncoder().encode(process.env.JWT_SECREATE);
     const user = await prisma.user.create({
       data: {
         first_name: firstName,
